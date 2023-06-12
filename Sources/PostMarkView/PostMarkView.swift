@@ -39,14 +39,18 @@ public struct PostMarkView<BGS: ShapeStyle, V: View>: View {
 struct PostMaskView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            Color(hue: 0.57, saturation: 0.4, brightness: 0.6)
+            LinearGradient(colors: [.yellow, .purple], startPoint: .topLeading, endPoint: .bottomTrailing)
                 .ignoresSafeArea()
+                .saturation(0.4)
 
-            PostMarkView(dotSize: 4.0, dotSpacing: 2.0) {
-                Text("Hello World")
-                    .padding()
-                    .background(.red)
-                    .padding()
+            PostMarkView(
+                background: .linearGradient(colors: [.yellow, .green], startPoint: .topLeading, endPoint: .bottomTrailing),
+                dotSize: 4.0,
+                dotSpacing: 2.0,
+                edges: [.top, .bottom])
+            {
+                Text("Hello World!")
+                    .padding(40.0)
             }
             .shadow(radius: 10)
             .rotationEffect(.degrees(25))
